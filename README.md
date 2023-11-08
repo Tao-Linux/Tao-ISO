@@ -1,5 +1,5 @@
 <p align="center">
-<img src="https://github.com/yatoub/Tao-ISO/blob/main/assets/tao.svg?raw=true" width=25% height=25%>
+<img src="https://github.com/Tao-Linux/Tao-ISO/blob/main/assets/tao.svg?raw=true" width=25% height=25%>
 </p>
 
 <h1 align="center">[WIP] Tao Linux ISOs</h1>
