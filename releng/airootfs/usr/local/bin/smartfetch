@@ -17,8 +17,7 @@ fi
 args=( "$@" "${args[@]}" )
 
 # Set the fetch command
-nf_command="/usr/bin/neowofetch"
-#nf_command="/usr/bin/neofetch" # Original neofetch
+nf_command="/usr/bin/neofetch"
 
 # Run the fetch command with the arguments
 "$nf_command" "${args[@]}"
