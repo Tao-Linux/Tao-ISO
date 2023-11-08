@@ -188,7 +188,7 @@ xinit-xsession
 catppuccin-gtk-theme-mocha
 gnome-themes-extra
 gtk-engine-murrine
-lightly-git
+# lightly-git (removed by Tao maintainers)
 papirus-folders-catppuccin-git
 papirus-icon-theme
 qt5ct
