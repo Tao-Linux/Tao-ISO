@@ -1,0 +1,7 @@
+NAME="Tao Linux"
+PRETTY_NAME="Tao Linux"
+ID=tao
+ID_LIKE=arch
+BUILD_ID=rolling
+ANSI_COLOR="0;31"
+HOME_URL="https://github.com/yatoub/"

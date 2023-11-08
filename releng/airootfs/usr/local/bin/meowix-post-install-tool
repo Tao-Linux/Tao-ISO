@@ -1,0 +1,101 @@
+#!/bin/bash
+# This is the Tao Linux post-install tool.
+echo -e "Hi, welcome to \033[38;2;243;139;168mM\033[38;2;250;179;135me\033[38;2;249;226;175mo\033[38;2;166;227;161mw\033[38;2;137;180;250mi\033[38;2;203;166;247mx\033[0m Linux!"
+echo "We need to get some things ready for you before you can use the system."
+password=$(gum input --password --prompt="Please enter your sudo password: " --placeholder="" --cursor.foreground=7)
+while ! echo "$password" | sudo -S pacman -Syu --noconfirm; do
+    echo -e "Incorrect password. Please try again or press Ctrl+C to exit."
+    password=$(gum input --password --prompt="Please enter your sudo password: " --placeholder="" --cursor.foreground=7)
+done
+options=("tall" "wide" "rtall" "rwide" "grid" "rgrid" "even" "tiled" "monocle")
+previews=(
+"
+_______________
+|        |____|
+|        |____|
+|        |____|
+|________|____|" 
+"
+_______________
+|             |
+|             |
+|_____________|
+|____|____|___|" 
+"
+_______________
+|____|        |
+|____|        |
+|____|        |
+|____|________|"
+"
+_______________
+|____|____|___|
+|             |
+|             |
+|_____________|"
+"
+_____________
+|   |   |   |
+|___|___|___|
+|   |   |   |
+|___|___|___|"
+"
+_____________
+|_____|_____|
+|_____|_____|
+|_____|_____|"
+"
+_______________
+|___|____|____|
+|___|____|____|
+|___|____|____|"
+"
+_______________
+|        |    |
+|        |____|
+|        |  | |
+|________|__|_|"
+"
+_______________
+|             |
+|             |
+|             |
+|_____________|"
+)
+selected=0
+while true; do
+    clear
+    echo "Please choose a layout for the window manager."
+    echo "Use the up and down arrow keys to make a selection and press enter when you have decided."
+    for i in "${!options[@]}"; do
+        if [ "$i" -eq "$selected" ]; then
+            echo "> ${options[$i]}"
+        else
+            echo "  ${options[$i]}"
+        fi
+    done
+    tput cup 10 30
+    echo "${previews[$selected]}"
+    read -rsn1 input
+    case "$input" in
+        "A") # Up arrow
+            selected=$(( (selected - 1 + ${#options[@]}) % ${#options[@]} ))
+            ;;
+        "B") # Down arrow
+            selected=$(( (selected + 1) % ${#options[@]} ))
+            ;;
+        "") # Enter key
+            clear
+            echo "You selected the layout: ${options[$selected]}"
+            echo "Writing to bspwmrc..."
+            writeat=$(awk '/MPIT/{ print NR + 1; exit }' ~/.config/bspwm/bspwmrc)
+            sed -i "${writeat}i\desktops=\$(bspc query -D --names)\nfor desktop in \$desktops; do\n    bsp-layout set ${options[$selected]} \"\$desktop\"\ndone" ~/.config/bspwm/bspwmrc
+            echo "Reloading BSPWM..."
+            bspc wm -r
+            break
+            ;;
+    esac
+done
+echo "$password" | sudo -S rm /var/tmp/calamares-finished.lock
+echo -e "\nYour system is ready."
+read -n 1 -s -r -p "Press any key to exit..."

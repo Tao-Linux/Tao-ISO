@@ -1,0 +1,25 @@
+componentName: tao
+welcomeStyleCalamares: false
+welcomeExpandingLogo: true
+windowExpanding: fullscreen
+sidebar: widget
+navigation: widget
+strings:
+    productName:         "@{NAME}"
+    shortProductName:    Tao
+    version:             23.10 "Wrong Moon"
+    shortVersion:        23.10
+    versionedName:       Tao Linux 23.10 "Wrong Moon"
+    shortVersionedName:  Tao 23.10
+    bootloaderEntryName: Tao
+    productUrl:          https://tao-linux.github.io/
+images:
+    productIcon:         "squid.png"
+    productLogo:         "squid.png"
+    productWelcome:      "languages.png"
+style:
+   sidebarBackground:    "#1e1e2e"
+   sidebarText:          "#cdd6f4"
+   sidebarTextSelect:    "#11111b"
+   sidebarTextHighlight: "#cdd6f4"
+slideshow: "show.qml"

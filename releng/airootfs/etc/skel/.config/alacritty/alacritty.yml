@@ -1,0 +1,9 @@
+import:
+  - ~/.config/alacritty/mocha.yml
+font:
+  size: 7.5
+  glyph_offset:
+    x: -1
+cursor:
+  style:
+    shape: Beam
