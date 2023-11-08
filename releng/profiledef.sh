@@ -3,7 +3,7 @@
 
 iso_name="taolinux"
 iso_label="MWIX_$(date --date="@${SOURCE_DATE_EPOCH:-$(date +%s)}" +%g%m)"
-iso_publisher="Tao Linux <https://github.com/yatoub>"
+iso_publisher="Tao Linux <https://github.com/Tao-Linux>"
 iso_application="Tao Linux Live CD"
 iso_version="$(date --date="@${SOURCE_DATE_EPOCH:-$(date +%s)}" +%g.%m)"
 install_dir="arch"
