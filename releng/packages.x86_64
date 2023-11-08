@@ -234,7 +234,7 @@ hyfetch-git
 iwgtk
 jgmenu
 libnotify
-# lsb-release-tao (removed by Tao maintainers)
+lsb-release-tao
 lsd-git
 micro
 mpv
